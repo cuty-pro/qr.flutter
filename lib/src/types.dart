@@ -45,6 +45,9 @@ enum QrEyeShape {
 
   /// Use circular eye frame.
   circle,
+
+  /// Use custom border radius eye frame
+  radius,
 }
 
 /// Enumeration representing the shape of Data modules inside QR.
@@ -60,7 +63,11 @@ enum QrDataModuleShape {
 @immutable
 class QrEyeStyle {
   /// Create a new set of styling options for QR Eye.
-  const QrEyeStyle({this.eyeShape, this.color});
+  const QrEyeStyle({
+    this.eyeShape,
+    this.color,
+    this.radius = 20,
+  });
 
   /// Eye shape.
   final QrEyeShape? eyeShape;
@@ -68,13 +75,18 @@ class QrEyeStyle {
   /// Color to tint the eye.
   final Color? color;
 
+  /// Eye radius if [QrEyeShape.radius] selected
+  final double radius;
+
   @override
-  int get hashCode => eyeShape.hashCode ^ color.hashCode;
+  int get hashCode => eyeShape.hashCode ^ color.hashCode ^ radius.hashCode;
 
   @override
   bool operator ==(Object other) {
     if (other is QrEyeStyle) {
-      return eyeShape == other.eyeShape && color == other.color;
+      return eyeShape == other.eyeShape &&
+          color == other.color &&
+          radius == other.radius;
     }
     return false;
   }
