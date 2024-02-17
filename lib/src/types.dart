@@ -78,7 +78,7 @@ class QrEyeStyle {
   /// Color to tint the eye.
   final Color? color;
 
-  /// Eye radius if [QrEyeShape.radius] selected
+  /// Eye radius if [eyeShape] [QrEyeShape.radius] selected
   final double radius;
 
   @override
