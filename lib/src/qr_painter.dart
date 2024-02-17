@@ -260,7 +260,7 @@ class QrPainter extends CustomPainter {
         var pixelHTweak = 0.0;
         var pixelVTweak = 0.0;
         if (gapless && _hasAdjacentHorizontalPixel(x, y, _qr!.moduleCount)) {
-          pixelHTweak = 0.5;
+          pixelHTweak = 01;
         }
         if (gapless && _hasAdjacentVerticalPixel(x, y, _qr!.moduleCount)) {
           pixelVTweak = 0.5;
@@ -274,9 +274,15 @@ class QrPainter extends CustomPainter {
         if (dataModuleStyle.dataModuleShape == QrDataModuleShape.square) {
           canvas.drawRect(squareRect, paint);
         } else {
+          double radius;
+          if (dataModuleStyle.dataModuleShape == QrDataModuleShape.radius) {
+            radius = dataModuleStyle.radius;
+          } else {
+            radius = paintMetrics.pixelSize + pixelHTweak;
+          }
           final roundedRect = RRect.fromRectAndRadius(
             squareRect,
-            Radius.circular(paintMetrics.pixelSize + pixelHTweak),
+            Radius.circular(radius),
           );
           canvas.drawRRect(roundedRect, paint);
         }

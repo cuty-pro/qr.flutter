@@ -46,7 +46,7 @@ enum QrEyeShape {
   /// Use circular eye frame.
   circle,
 
-  /// Use custom border radius eye frame
+  /// Use custom border radius eye frame.
   radius,
 }
 
@@ -57,6 +57,9 @@ enum QrDataModuleShape {
 
   /// Use circular dots.
   circle,
+
+  /// Use custom border radius dots.
+  radius,
 }
 
 /// Styling options for finder pattern eye.
@@ -99,21 +102,29 @@ class QrDataModuleStyle {
   const QrDataModuleStyle({
     this.dataModuleShape,
     this.color,
+    this.radius = 20,
   });
 
-  /// Eye shape.
+  /// Data module shape.
   final QrDataModuleShape? dataModuleShape;
 
   /// Color to tint the data modules.
   final Color? color;
 
+  /// Data module radius if
+  /// [dataModuleShape] [QrDataModuleShape.radius] selected
+  final double radius;
+
   @override
-  int get hashCode => dataModuleShape.hashCode ^ color.hashCode;
+  int get hashCode =>
+      dataModuleShape.hashCode ^ color.hashCode ^ radius.hashCode;
 
   @override
   bool operator ==(Object other) {
     if (other is QrDataModuleStyle) {
-      return dataModuleShape == other.dataModuleShape && color == other.color;
+      return dataModuleShape == other.dataModuleShape &&
+          color == other.color &&
+          radius == other.radius;
     }
     return false;
   }
