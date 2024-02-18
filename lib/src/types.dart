@@ -70,6 +70,8 @@ class QrEyeStyle {
     this.eyeShape,
     this.color,
     this.radius = 20,
+    this.pixelVTweak,
+    this.pixelHTweak,
   });
 
   /// Eye shape.
@@ -80,6 +82,12 @@ class QrEyeStyle {
 
   /// Eye radius if [eyeShape] [QrEyeShape.radius] selected
   final double radius;
+
+  /// Eye additional weight
+  final double? pixelVTweak;
+
+  /// Eye additional height
+  final double? pixelHTweak;
 
   @override
   int get hashCode => eyeShape.hashCode ^ color.hashCode ^ radius.hashCode;

@@ -268,8 +268,8 @@ class QrPainter extends CustomPainter {
         final squareRect = Rect.fromLTWH(
           left,
           top,
-          paintMetrics.pixelSize + pixelHTweak,
-          paintMetrics.pixelSize + pixelVTweak,
+          paintMetrics.pixelSize + (eyeStyle.pixelHTweak ?? pixelHTweak),
+          paintMetrics.pixelSize + (eyeStyle.pixelVTweak ?? pixelVTweak),
         );
         if (dataModuleStyle.dataModuleShape == QrDataModuleShape.square) {
           canvas.drawRect(squareRect, paint);
